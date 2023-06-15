@@ -1,6 +1,8 @@
 pipeline {
 
-	agent any
+	agent {
+		label 'Linux_Node1'
+	      }
 
 	options {
 		buildDiscarder(logRotator(numToKeepStr: '5'))
