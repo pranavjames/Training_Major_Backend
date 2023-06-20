@@ -48,7 +48,7 @@ pipeline {
 			steps {
 
 				withSonarQubeEnv('Sonarqube_Server') {
-					bat 'mvn sonar:sonar'
+					sh 'mvn sonar:sonar'
 				}
 
 				timeout(time: 10, unit: 'MINUTES') {
