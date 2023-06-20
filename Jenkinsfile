@@ -20,28 +20,28 @@ pipeline {
 
 		stage('Begin') {
 			steps {
-				bat 'echo "Helo"'
+				sh 'echo "Helo"'
 			}
 		}
 
 		stage('Initialize') {
 			steps {
-				echo "PATH = ${M2_HOME}/bin:${PATH}"
-				echo "M2_HOME = /opt/maven"
+				sh "PATH = ${M2_HOME}/bin:${PATH}"
+				sh "M2_HOME = /opt/maven"
 			}
 		}
 
 		stage('Clean') {
 			steps {
 				echo "Cleaning"
-				bat "mvn clean"
+				sh "mvn clean"
 			}
 		}
 
 		stage('Install') {
 			steps {
 				echo "Install"
-				bat "mvn install"
+				sh "mvn install"
 			}
 		}
 
