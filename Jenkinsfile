@@ -26,8 +26,7 @@ pipeline {
 
 		stage('Initialize') {
 			steps {
-				sh "PATH = ${M2_HOME}/bin:${PATH}"
-				sh "M2_HOME = /opt/maven"
+				sh "echo 'Initializing'"
 			}
 		}
 
@@ -68,7 +67,7 @@ pipeline {
 					def uploadSpec = """{
 					"files": [{
 						"pattern": "target/*.jar",
-						"target": "Jenkins_Integration/"
+						"target": "CICD/"
 					}]
 				}
 				"""
