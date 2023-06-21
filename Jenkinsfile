@@ -13,7 +13,7 @@ pipeline {
       
 
        DOCKER_REGISTRYY = credentials("hosted_jfrog_ip");
-	   DOCKER_REGISTRY = "${DOCKER_REGISTRYY}/docker-pranav/spring"
+	   DOCKER_REGISTRY = "${DOCKER_REGISTRYY}/docker-pranav/deccan_pranav"
        DATE = new Date().format('yy.M')
        TAG = "${DATE}.${BUILD_NUMBER}"
     }
@@ -102,7 +102,7 @@ pipeline {
 
 
 
-                 sh "docker build -t ${DOCKER_REGISTRY}/docker-pranav/deccan_pranav:${TAG} -t ${DOCKER_REGISTRY}/docker-pranav/deccan_pranav:latest ."
+                 sh "docker build -t ${DOCKER_REGISTRY}:${TAG} -t ${DOCKER_REGISTRY}:latest ."
 		  				
 
 			}
@@ -111,8 +111,8 @@ pipeline {
 
         stage('Push Image To Registry') {
 			steps {
-				sh "docker push ${DOCKER_REGISTRY}/docker-pranav/deccan_pranav:${TAG}"
-				sh "docker push ${DOCKER_REGISTRY}/docker-pranav/deccan_pranav:latest"
+				sh "docker push ${DOCKER_REGISTRY}:${TAG}"
+				sh "docker push ${DOCKER_REGISTRY}:latest"
 			}
 		}
 
