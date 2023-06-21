@@ -13,7 +13,7 @@ pipeline {
       
 
        
-	   DOCKER_REGISTRY = "http://172.27.59.80:8082/docker-pranav/deccan_pranav"
+	   DOCKER_REGISTRY = "172.27.59.80:8082/docker-pranav/deccan_pranav"
        DATE = new Date().format('yy.M')
        TAG = "${DATE}.${BUILD_NUMBER}"
     }
