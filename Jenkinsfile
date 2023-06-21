@@ -12,8 +12,8 @@ pipeline {
 
       
 
-       DOCKER_REGISTRY = credentials("hosted_jfrog_ip");
-	   DOCKER_REGISTRY = "${DOCKER_REGISTRY}/docker-pranav/spring"
+       DOCKER_REGISTRYY = credentials("hosted_jfrog_ip");
+	   DOCKER_REGISTRY = "${DOCKER_REGISTRYY}/docker-pranav/spring"
        DATE = new Date().format('yy.M')
        TAG = "${DATE}.${BUILD_NUMBER}"
     }
