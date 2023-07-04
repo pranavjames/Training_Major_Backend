@@ -28,10 +28,12 @@ pipeline {
 	stages {
 
 		stage('Begin') {
+			steps{
 			node('abhishek_node') {
         bat 'echo " for node My test here"'
         
        }
+	   }
 		}
 
 		
