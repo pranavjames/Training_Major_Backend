@@ -28,11 +28,14 @@ pipeline {
 	stages {
 
 		stage('Begin') {
-			steps {
-				bat 'echo "Helo"'
-				bat 'echo "Docker registry here : ${DOCKER_REGISTRY}"'
-			}
+			node('abhishek_node') {
+        bat 'echo " for node My test here"'
+        
+       }
 		}
+
+		
+
 
 		stage('Initialize') {
 			steps {
