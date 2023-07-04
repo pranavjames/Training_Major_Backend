@@ -22,7 +22,7 @@ pipeline {
 
 		maven "Maven"
 
-		jdk "JDK17"
+		jdk "JDK11"
 
 	}
 
