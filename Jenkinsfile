@@ -29,28 +29,28 @@ pipeline {
 
 		stage('Begin') {
 			steps {
-				sh 'echo "Helo"'
-				sh 'echo "Docker registry here : ${DOCKER_REGISTRY}"'
+				bat 'echo "Helo"'
+				bat 'echo "Docker registry here : ${DOCKER_REGISTRY}"'
 			}
 		}
 
 		stage('Initialize') {
 			steps {
-				sh "echo 'Initializing'"
+				bat "echo 'Initializing'"
 			}
 		}
 
 		stage('Clean') {
 			steps {
 				echo "Cleaning"
-				sh "mvn clean"
+				bat "mvn clean"
 			}
 		}
 
 		stage('Install') {
 			steps {
 				echo "Install"
-				sh "mvn install"
+				bat "mvn install"
 			}
 		}
 
@@ -58,7 +58,7 @@ pipeline {
 			steps {
 
 				withSonarQubeEnv('Sonarqube_Server') {
-					sh 'mvn sonar:sonar'
+					bat 'mvn sonar:sonar'
 				}
 
 				timeout(time: 10, unit: 'MINUTES') {
@@ -100,7 +100,7 @@ pipeline {
 
 
 
-                 sh "docker build -t ${DOCKER_REGISTRY}:${TAG} -t ${DOCKER_REGISTRY}:latest ."
+                 bat "docker build -t ${DOCKER_REGISTRY}:${TAG} -t ${DOCKER_REGISTRY}:latest ."
 		  				
 
 			}
@@ -109,8 +109,8 @@ pipeline {
 
         stage('Push Image To Registry') {
 			steps {
-				sh "docker push ${DOCKER_REGISTRY}:${TAG}"
-				sh "docker push ${DOCKER_REGISTRY}:latest"
+				bat "docker push ${DOCKER_REGISTRY}:${TAG}"
+				bat "docker push ${DOCKER_REGISTRY}:latest"
 			}
 		}
 
