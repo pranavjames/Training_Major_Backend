@@ -78,7 +78,7 @@ pipeline {
 		stage('Deploy to Artifact') {
 			steps {
 				script {
-					def server = Artifactory.server 'Jfrog'
+					def server = Artifactory.server 'Pranav-Jfrog'
 					def uploadSpec = """{
 					"files": [{
 						"pattern": "target/*.jar",
