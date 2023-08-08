@@ -114,8 +114,8 @@ pipeline {
 
         stage('Push Image To Registry') {
 			steps {
-				bat "docker push ${DOCKER_REGISTRY}:${TAG}"
-				bat "docker push ${DOCKER_REGISTRY}:latest"
+				bat "podman push ${DOCKER_REGISTRY}:${TAG}"
+				bat "podman push ${DOCKER_REGISTRY}:latest"
 			}
 		}
 
