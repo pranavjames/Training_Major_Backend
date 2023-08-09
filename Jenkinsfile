@@ -29,7 +29,7 @@ pipeline {
 
 		stage('Begin') {
 			steps{
-			node('Abhishek_Staging_Node') {
+			node('Pranav_node') {
         bat 'echo " for node My test here"'
         
        }
