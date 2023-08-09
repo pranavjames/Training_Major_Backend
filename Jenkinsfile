@@ -105,7 +105,7 @@ pipeline {
 
 
 
-                 bat "docker build -t ${DOCKER_REGISTRY}:${TAG} -t ${DOCKER_REGISTRY}:latest ."
+                 bat "podman build -t ${DOCKER_REGISTRY}:${TAG} -t ${DOCKER_REGISTRY}:latest ."
 		  				
 
 			}
