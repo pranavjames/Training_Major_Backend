@@ -9,7 +9,7 @@ on :
 jobs :
 
   print-using-events :
-    runs-on : pranav-linux-1
+    runs-on : pranav_linuxx
     steps: 
        - name : print event
          run : echo '${{ toJSON(github.event) }}'
@@ -20,7 +20,7 @@ jobs :
       matrix: 
        java-version : [17]
        
-    runs-on : pranav-linux-1
+    runs-on : pranav_linuxx
     steps :
       - name : Checkout Code
         uses : actions/checkout@v3
