@@ -68,8 +68,9 @@ jobs :
 
  # Building Dockerfile
       - name : Build Image and Push To Artifactory
-        run : docker build -t 172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }} .
-              docker login -u ${{ secrets.JFROG_USERNAME }} -p ${{ secrets.JFROG_PASSWORD }} http://172.27.59.80:8082
-              docker push 172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}  
+        run : | 
+               docker build -t 172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }} .
+               docker login -u ${{ secrets.JFROG_USERNAME }} -p ${{ secrets.JFROG_PASSWORD }} http://172.27.59.80:8082
+               docker push 172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}  
 
       
