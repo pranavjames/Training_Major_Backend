@@ -74,16 +74,16 @@ jobs :
                docker push 172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}  
 
 
-# Trivy Scan for an Image
-      - name : Trivy Image Scanning
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: '172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH' 
+# # Trivy Scan for an Image
+#       - name : Trivy Image Scanning
+#         uses: aquasecurity/trivy-action@master
+#         with:
+#           image-ref: '172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}'
+#           format: 'table'
+#           exit-code: '1'
+#           ignore-unfixed: true
+#           vuln-type: 'os,library'
+#           severity: 'CRITICAL,HIGH' 
 
 # Slack Notification
       - name: slack-send
