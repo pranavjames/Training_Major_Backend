@@ -84,3 +84,16 @@ jobs :
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH' 
+
+# Slack Notification
+      - name: slack-send
+  # You may pin to the exact commit or the version.
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+         channel-id: '${{secrets.GH_ACTIONN_CHANNEL_ID}}'
+    # For posting a simple plain text message
+         slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+    
