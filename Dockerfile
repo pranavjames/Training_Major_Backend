@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17
 
-LABEL mentainer="pranavsur@cybage.com"
+LABEL maintainer="pranavsur@cybage.com"
 
 WORKDIR /app
 
