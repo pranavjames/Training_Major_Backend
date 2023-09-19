@@ -71,8 +71,8 @@ jobs :
         with:
           scan-type: 'fs'
           ignore-unfixed: true
-          # format: 'sarif'
-          # output: 'trivy-results.sarif'
+          format: 'sarif'
+          output: 'trivy-results.json'
           severity: 'CRITICAL,HIGH'
           id: trivy_scan_result
 
