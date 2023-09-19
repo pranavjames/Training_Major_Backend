@@ -77,8 +77,8 @@ jobs :
           id: trivy_scan_result
 
       - name: Fail the job on critical or high vulnerabilities
-        run: echo "${{ steps.trivy_scan_result.outputs }}"
-        if: ${{ steps.trivy_scan_result.outputs.results-critical != '0' || steps.trivy_scan_result.outputs.results-high != '0' }}
+        run: echo "Fail the job on critical or high vulnerabilities ${{ steps.trivy_scan_result.outputs }}"
+        # if: ${{ steps.trivy_scan_result.outputs.results-critical != '0' || steps.trivy_scan_result.outputs.results-high != '0' }}
         # run: |
         #   echo "${{ steps.trivy_scan_result.outputs }}"
         #   exit 1
