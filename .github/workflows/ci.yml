@@ -74,16 +74,17 @@ jobs :
           format: 'sarif'
           output: 'trivy-results.json'
           severity: 'CRITICAL,HIGH'
-          id: trivy_scan_result
+          
 
       - name: Fail the job on critical or high vulnerabilities
         run: |
-         echo "trivy scan results ${{ steps.trivy_scan_result }}"
-         echo "Fail the job on critical or high vulnerabilities ${{ steps.trivy_scan_result.outputs.results-high }}"
-        # if: ${{ steps.trivy_scan_result.outputs.results-critical != '0' || steps.trivy_scan_result.outputs.results-high != '0' }}
-        # run: |
-        #   echo "${{ steps.trivy_scan_result.outputs }}"
-        #   exit 1
+             vulnerability_count=$(cat trivy-results.json | jq -r '.runs[0].results[] | select(.level == "error" or .level == "warning") | .ruleId' | sort | uniq -c | wc -l)
+             if [ "$vulnerability_count" -gt 0 ]; then
+             echo "Found $vulnerability_count vulnerabilities. Failing the job."
+             exit 1
+             else
+             echo "No critical or high vulnerabilities found."
+             fi
         
       # - name: Upload Trivy scan results to GitHub Security tab
       #   uses: github/codeql-action/upload-sarif@v2
