@@ -76,15 +76,15 @@ jobs :
           severity: 'CRITICAL,HIGH'
           
 
-      - name: Fail the job on critical or high vulnerabilities
-        run: |
-             vulnerability_count=$(cat trivy-results.json | jq -r '.runs[0].results[] | select(.level == "error" or .level == "warning") | .ruleId' | sort | uniq -c | wc -l)
-             if [ "$vulnerability_count" -gt 0 ]; then
-             echo "Found $vulnerability_count vulnerabilities. Failing the job."
-             exit 1
-             else
-             echo "No critical or high vulnerabilities found."
-             fi
+      # - name: Fail the job on critical or high vulnerabilities
+      #   run: |
+      #        vulnerability_count=$(cat trivy-results.json | jq -r '.runs[0].results[] | select(.level == "error" or .level == "warning") | .ruleId' | sort | uniq -c | wc -l)
+      #        if [ "$vulnerability_count" -gt 0 ]; then
+      #        echo "Found $vulnerability_count vulnerabilities. Failing the job."
+      #        exit 1
+      #        else
+      #        echo "No critical or high vulnerabilities found."
+      #        fi
         
       # - name: Upload Trivy scan results to GitHub Security tab
       #   uses: github/codeql-action/upload-sarif@v2
@@ -99,16 +99,16 @@ jobs :
                docker push 172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}  
 
 
-# # Trivy Scan for an Image
-#       - name : Trivy Image Scanning
-#         uses: aquasecurity/trivy-action@master
-#         with:
-#           image-ref: '172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}'
-#           format: 'table'
-#           exit-code: '1'
-#           ignore-unfixed: true
-#           vuln-type: 'os,library'
-#           severity: 'CRITICAL,HIGH' 
+# Trivy Scan for an Image
+      - name : Trivy Image Scanning
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 172.27.59.80:8082/docker-pranav/spring_boot:${{ github.run_number }}
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          # vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH' 
 
 # Slack Notification
       - name: slack-send
