@@ -112,6 +112,7 @@ jobs :
 
 # Slack Notification
       - name: slack-send
+        if: always() # This step will always run
   # You may pin to the exact commit or the version.
         uses: slackapi/slack-github-action@v1.24.0
         with:
