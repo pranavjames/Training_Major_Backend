@@ -45,7 +45,7 @@ jobs:
           MYSQL_HOST: localhost  # Set the host to localhost for the service container
           MYSQL_PORT: 3306
           MYSQL_DATABASE: cybage
-          MYSQL_USER: root
+          MYSQL_USER: test1
           MYSQL_PASSWORD: password
 
         run: mvn clean install 
