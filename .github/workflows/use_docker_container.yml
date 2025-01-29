@@ -8,7 +8,7 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-
+    
     services:
       mysql_service:
         image: mysql:latest
