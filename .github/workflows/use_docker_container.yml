@@ -1,7 +1,7 @@
 name: Use Docker Container as Database
 
 on: 
-  push: main
+  push: ['main']
 
 jobs:
   job1:
