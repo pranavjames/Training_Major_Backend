@@ -3,7 +3,7 @@ name: Use Docker Container as Database
 on: 
   push:
     branches:
-      - main
+      - master
 
 jobs:
   job1:
