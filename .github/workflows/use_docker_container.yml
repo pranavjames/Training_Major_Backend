@@ -29,8 +29,8 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '21'
+          distribution: 'oracle'
+          java-version: '17'
           
       - name: Cache the maven dependency
         uses: actions/cache@v2
