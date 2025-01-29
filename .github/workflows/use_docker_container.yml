@@ -50,3 +50,11 @@ jobs:
 
         run: mvn clean install 
 
+      - name: release
+        uses: Shopify/upload-to-release@v1
+        with:
+          name: my-artifact
+          path: ./target/**.jar
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          content-type: text/plain # Optional  
+
