@@ -1,4 +1,4 @@
-name: Use Docker Container as Database
+name: Use Docker Container as Database and Use Codeql
 
 on: 
   push:
@@ -49,5 +49,28 @@ jobs:
           MYSQL_PASSWORD: password
 
         run: mvn clean install 
+
+
+      - name: Set up CodeQL
+        uses: github/codeql-action/setup-codeql@v4
+
+
+          # Step 3: Initialize CodeQL database
+
+      - name: Initialize CodeQL database
+        run: |
+          mkdir -p codeql-db
+          codeql database init --language=javascript --output=codeql-db
+  
+      # Step 4: Analyze the code with CodeQL
+      - name: Run CodeQL analysis
+        run: |
+          codeql database analyze codeql-db --format=sarif-latest --output=codeql-results.sarif
+  
+      # Step 5: Upload SARIF results to GitHub for review
+      - name: Upload CodeQL results
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: codeql-results.sarif  
 
 
