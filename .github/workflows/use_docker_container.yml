@@ -8,14 +8,14 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    
+
     services:
       mysql_service:
         image: mysql:latest
         ports:
           - 3306:3306 
         env:
-          MYSQL_HOST: localhost  # Set the host to localhost for the service container
+          MYSQL_HOST: localhost 
           MYSQL_PORT: 3306
           MYSQL_DATABASE: cybage
           MYSQL_USER: root
